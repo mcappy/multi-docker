@@ -26,16 +26,14 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    - name: Login to Docker
+    - name: Push to Docker Hub
     - run: docker login -u ${{ secrets.DOCKER_ID }} -p ${{ secrets.DOCKER_PASSWORD }}
     
-    - name: Building Production Images
     - run: docker build -t mcappy/multi-client ./client
     - run: docker build -t mcappy/multi-nginx ./nginx
     - run: docker build -t mcappy/multi-server ./server
     - run: docker build -t mcappy/multi-worker ./worker
     
-    - name: Push to Docker Hub
     - run: docker push mcappy/multi-client
     - run: docker push mcappy/multi-nginx
     - run: docker push mcappy/multi-server

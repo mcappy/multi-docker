@@ -25,19 +25,19 @@ jobs:
     needs: Test
     
     steps:
-    - uses: actions/checkout@v2
-    - name: Push to Docker Hub
-    - run: docker login -u ${{ secrets.DOCKER_ID }} -p ${{ secrets.DOCKER_PASSWORD }}
-    
-    - run: docker build -t mcappy/multi-client ./client
-    - run: docker build -t mcappy/multi-nginx ./nginx
-    - run: docker build -t mcappy/multi-server ./server
-    - run: docker build -t mcappy/multi-worker ./worker
-    
-    - run: docker push mcappy/multi-client
-    - run: docker push mcappy/multi-nginx
-    - run: docker push mcappy/multi-server
-    - run: docker push mcappy/multi-worker
+      - uses: actions/checkout@v2
+      - name: Push to Docker Hub
+      - run: docker login -u ${{ secrets.DOCKER_ID }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - run: docker build -t mcappy/multi-client ./client
+      - run: docker build -t mcappy/multi-nginx ./nginx
+      - run: docker build -t mcappy/multi-server ./server
+      - run: docker build -t mcappy/multi-worker ./worker
+
+      - run: docker push mcappy/multi-client
+      - run: docker push mcappy/multi-nginx
+      - run: docker push mcappy/multi-server
+      - run: docker push mcappy/multi-worker
         
       
       
